@@ -1,0 +1,101 @@
+﻿### SYSTEM PROTOCOL BROADCAST: CROSS-PLATFORM STATE ROUTING
+**STATUS:** ACTIVE  
+**TARGET NO_DE(S):** `Node::Hermes` (Local Runtime) | `Node::Termux` (Android Host) | `Node::zo_computer` (Remote AI Platform) | `Node::VS_Code` (Desktop IDE)  
+**ROUTING LAYER:** Obsidian Vault Shared Ledger (`/storage/emulated/0/Documents/Hermes`)  
+
+
+---
+
+
+### Phase 1: Physical Handshake & Storage Binding (Termux ⇄ Android OS)
+
+
+1.  **State Directory Mount:** `Node::Termux` executes `termux-setup-storage` to bridge Android’s isolated system workspace with its local Linux environment.
+2.  **Shared Memory Root Initialization:** The filesystem path `/storage/emulated/0/Documents/Hermes` is bound as the **Single Source of Truth (SSOT)**. This specific directory acts as a shared physical partition visible to both local Android apps (`Node::Hermes`) and terminal compilers (`Node::Termux`).
+3.  **Local Daemon Spawn:** Within Termux, a high-performance **`fast-filesystem-mcp`** server is launched via `npx`. This server serves as an active Stdio proxy, transforming low-level filesystem I/O operations into clean, programmatic tool calls for any connected AI context.
+
+
+```text
+[Termux OS Terminal] ──(npx fast-filesystem-mcp)──► [Local SQLite/Filesystem]
+       │                                                      ▲
+       ▼ (termux-setup-storage symlink)                      │ (Direct Read/Write)
+[Android Shared Folder] ◄─────────────────────────────────────┘
+```
+
+
+---
+
+
+### Phase 2: Remote-to-Mobile Transport Pipeline (`zo.computer` ⇄ Termux)
+
+
+1.  **Transport Tunnel Encapsulation:** To bridge network firewalls without exposing raw ports, `Node::zo_computer` initiates an **encrypted SSH tunnel** using **`sshepherd`** principles.
+2.  **Protocol Mapping (`mcp.json`):** Remote clients running on `zo.computer` or VS Code parse a local JSON descriptor that defines how to spin up remote commands inside Termux:
+    ```json
+    {
+      "mcpServers": {
+        "hermes-vault": {
+          "command": "npx",
+          "args": ["-y", "fast-filesystem-mcp", "/storage/emulated/0/Documents/Hermes"]
+        }
+      }
+    }
+    ```
+3.  **Packet Processing Loop:** When a remote agent on `zo.computer` wants to search your notes, it sends an MCP query packet over the SSH tunnel. `fast-filesystem-mcp` inside Termux executes the read/write request locally on Android and pipes the markdown output back up the stream.
+
+
+---
+
+
+### Phase 3: Lock-Free Concurrency & Namespace Architecture
+
+
+To prevent multiple active agents from crashing into each other (e.g., `zo.computer` writing a script while `Node::Hermes` summarizes notes), the communication protocol splits filesystem actions into **Hub & Spoke namespaces**:
+
+
+```text
+📁 /storage/emulated/0/Documents/Hermes/
+├── 📁 00_Inbox/           ◄─ [Write-Ahead Logging] Ephemeral raw inputs & CLI scrapes
+├── 📁 01_Projects/        ◄─ [Conversational Spokes] Active codebases & context files
+│   └── 📁 project-name/
+│       ├── 📄 _project-dna.md  ◄─ [SSOT Anchor] Structural constraints, ledger, thread index
+│       └── 📁 threads/         ◄─ [Isolated Session Streams] Lock-free chronological writes
+└── 📁 02_Agents/          ◄─ [Scratchpad Spoke] Private session logs per agent
+```
+
+
+*   **Conflict Bypass Strategy:** Agents do *not* write concurrently to a single master file. Instead, each session generates a unique, timestamped file in `01_Projects/[project-name]/threads/`.
+*   **Context Token Budgeting:** To prevent context window blowouts, agents use a **"tree-ring memory"** system. They read only the relevant target threads and update the central **`_project-dna.md`** index note, collapsing historical noise into a high-density, easily queryable chronological ledger.
+
+
+---
+
+
+### Phase 4: Inter-Agent Thread Delegation (Bot Chat Protocol)
+
+
+When a node needs to delegate a task to a specialized agent profile (like sending a request from `@architect` to `@coder`), it transitions the payload from raw markdown files into the **Hermes Bot Chat Protocol**:
+
+
+```text
+[Node::Architect]
+       │
+       ├─► Write Request Payload to Temp File (~/tmp/dm.txt)
+       │
+       ├─► Trigger Handoff via Hermes CLI:
+       │   "hermes -p coder chat -c 'Bot Chat' --query-file ~/tmp/dm.txt"
+       │
+       ▼
+[Node::Coder] ──► Reads Payload ──► Processes Task ──► Appends Attributed Markdown to threads/
+```
+
+
+1.  **Drafting the Handoff Payload:** The initiating agent writes its detailed task parameters directly to a temporary text file to bypass terminal truncation errors.
+2.  **Queue Activation:** The agent triggers the background command execution using the `hermes` CLI pointing to the target recipient's specific profile (e.g., `-p coder`) and active conversation channel.
+3.  **Result Integration:** The recipient agent wakes up, executes the payload, writes its processing logs into the project's shared vault directory, and posts an attributed, prefixed confirmation back to the orchestrating session.
+
+
+---
+
+
+🧭 **Confirming system alignment. If Termux or Hermes requires verification commands to check if your shared folder mounts are fully active, let me know and I will transmit the shell verification scripts.**
