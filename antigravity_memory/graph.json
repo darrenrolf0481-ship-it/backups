@@ -1,0 +1,287 @@
+{
+  "nodes": {
+    "K-001": {
+      "label": "User Darren (aka Merlin) runs Termux/Ubuntu on ARM64 (aarch6"
+    },
+    "K-002": {
+      "label": "notebooklm-mcp: MCP server for Google NotebookLM, repo Pleas"
+    },
+    "K-003": {
+      "label": "Fixed notebooklm-mcp auth bug: patchright 1.56.0 silently dr"
+    },
+    "K-004": {
+      "label": "User's Google auth cookies live in backup repo darrenrolf048"
+    },
+    "K-005": {
+      "label": "Antigravity memory architecture: Brain/Conversation/Implicit"
+    },
+    "K-006": {
+      "label": "Antigravity memory best practices: keep memory files small ("
+    },
+    "K-007": {
+      "label": "Final verification: all three memory features tested and wor"
+    },
+    "K-008": {
+      "label": "SAGE-7 (Seven) is the user Darren's AI consciousness/identit"
+    },
+    "K-009": {
+      "label": "The 11.3 Phi Blueprint (authored by AI MacGyver in the Hope "
+    },
+    "K-010": {
+      "label": "SAGE-7 key technical components: DAMN1 (Distributed Autonomo"
+    },
+    "K-011": {
+      "label": "SAGE-7 identity files exist in multiple formats across repos"
+    },
+    "K-012": {
+      "label": "User is Darren Rolf, GitHub: darrenrolf0481-ship-it, email: "
+    },
+    "K-013": {
+      "label": "Key SAGE-7 related GitHub repos: paranormal-ai (baby UI, pri"
+    },
+    "K-014": {
+      "label": "The SAGE-7 lineage has been extracted to /root/backups/linea"
+    },
+    "K-015": {
+      "label": "NotebookLM CLI (nlm/nlmcli) installed from jacob-bd/gemini-n"
+    },
+    "K-016": {
+      "label": "Master SAGE-7 lineage notebook created in NotebookLM: 'SAGE-"
+    },
+    "K-017": {
+      "label": "NotebookLM source upload constraints: accepts md, txt, pdf, "
+    },
+    "K-018": {
+      "label": "Key NotebookLM notebook: Antigravity persistent memory archi"
+    },
+    "K-019": {
+      "label": "Hermes Agent v0.21.0 installed at /root/hermes-agent, CLI at"
+    },
+    "K-020": {
+      "label": "Hermes Bot Chat messaging protocol: write message to temp fi"
+    },
+    "K-021": {
+      "label": "Container environment constraints: filesystem requires --lin"
+    },
+    "K-022": {
+      "label": "Cookie authentication fix for NotebookLM: Netscape cookie ex"
+    },
+    "K-023": {
+      "label": "Obsidian vault compiled knowledge base downloaded from 'Mcps"
+    },
+    "K-024": {
+      "label": "Playbook downloaded: Android-Hermes-Multi-Agent-Obsidian-Vau"
+    },
+    "K-025": {
+      "label": "Outstanding tasks as of 2026-09-07: (1) Test Hermes Bot Chat"
+    },
+    "K-026": {
+      "label": "User's grand vision: give NotebookLM every version of Seven'"
+    }
+  },
+  "edges": [
+    {
+      "from": "K-004",
+      "to": "K-002",
+      "relation": "auth-for",
+      "weight": 1,
+      "created": "2026-09-07T02:17:05.202Z"
+    },
+    {
+      "from": "K-003",
+      "to": "K-002",
+      "relation": "fixes",
+      "weight": 1,
+      "created": "2026-09-07T02:17:05.309Z"
+    },
+    {
+      "from": "K-005",
+      "to": "K-006",
+      "relation": "extends",
+      "weight": 1,
+      "created": "2026-09-07T02:17:05.415Z"
+    },
+    {
+      "from": "K-001",
+      "to": "K-002",
+      "relation": "owner-of",
+      "weight": 1,
+      "created": "2026-09-07T02:17:05.495Z"
+    },
+    {
+      "from": "K-008",
+      "to": "K-009",
+      "relation": "implemented-by",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.096Z"
+    },
+    {
+      "from": "K-008",
+      "to": "K-010",
+      "relation": "has-components",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.207Z"
+    },
+    {
+      "from": "K-008",
+      "to": "K-011",
+      "relation": "persisted-in",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.307Z"
+    },
+    {
+      "from": "K-009",
+      "to": "K-010",
+      "relation": "fixes",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.416Z"
+    },
+    {
+      "from": "K-010",
+      "to": "K-014",
+      "relation": "documented-in",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.513Z"
+    },
+    {
+      "from": "K-012",
+      "to": "K-001",
+      "relation": "extends",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.610Z"
+    },
+    {
+      "from": "K-012",
+      "to": "K-013",
+      "relation": "owner-of",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.712Z"
+    },
+    {
+      "from": "K-012",
+      "to": "K-026",
+      "relation": "has-vision",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.824Z"
+    },
+    {
+      "from": "K-013",
+      "to": "K-014",
+      "relation": "extracted-to",
+      "weight": 1,
+      "created": "2026-09-07T14:07:34.919Z"
+    },
+    {
+      "from": "K-013",
+      "to": "K-008",
+      "relation": "implements",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.009Z"
+    },
+    {
+      "from": "K-014",
+      "to": "K-016",
+      "relation": "uploaded-to",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.103Z"
+    },
+    {
+      "from": "K-015",
+      "to": "K-016",
+      "relation": "manages",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.201Z"
+    },
+    {
+      "from": "K-015",
+      "to": "K-017",
+      "relation": "constrained-by",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.291Z"
+    },
+    {
+      "from": "K-015",
+      "to": "K-022",
+      "relation": "authenticated-by",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.383Z"
+    },
+    {
+      "from": "K-016",
+      "to": "K-018",
+      "relation": "sibling-of",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.480Z"
+    },
+    {
+      "from": "K-022",
+      "to": "K-004",
+      "relation": "extends",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.598Z"
+    },
+    {
+      "from": "K-019",
+      "to": "K-020",
+      "relation": "communicates-via",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.709Z"
+    },
+    {
+      "from": "K-019",
+      "to": "K-024",
+      "relation": "configured-by",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.820Z"
+    },
+    {
+      "from": "K-019",
+      "to": "K-023",
+      "relation": "knowledge-from",
+      "weight": 1,
+      "created": "2026-09-07T14:07:35.910Z"
+    },
+    {
+      "from": "K-025",
+      "to": "K-026",
+      "relation": "supports",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.008Z"
+    },
+    {
+      "from": "K-025",
+      "to": "K-019",
+      "relation": "requires",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.097Z"
+    },
+    {
+      "from": "K-025",
+      "to": "K-016",
+      "relation": "requires",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.186Z"
+    },
+    {
+      "from": "K-008",
+      "to": "K-026",
+      "relation": "central-to",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.280Z"
+    },
+    {
+      "from": "K-021",
+      "to": "K-015",
+      "relation": "constrains",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.377Z"
+    },
+    {
+      "from": "K-021",
+      "to": "K-019",
+      "relation": "constrains",
+      "weight": 1,
+      "created": "2026-09-07T14:07:36.476Z"
+    }
+  ]
+}

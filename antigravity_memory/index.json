@@ -1,0 +1,315 @@
+{
+  "nextKnowledgeId": 27,
+  "items": {
+    "K-001": {
+      "id": "K-001",
+      "slug": "user-darren-aka-merlin-runs-termux-ubunt",
+      "tags": [
+        "user",
+        "platform"
+      ],
+      "confidence": 0.95,
+      "created": "2026-09-07T02:16:59.548Z",
+      "reinforced": "2026-09-07T02:16:59.548Z"
+    },
+    "K-002": {
+      "id": "K-002",
+      "slug": "notebooklm-mcp-mcp-server-for-google-not",
+      "tags": [
+        "project",
+        "notebooklm"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T02:16:59.632Z",
+      "reinforced": "2026-09-07T02:16:59.632Z"
+    },
+    "K-003": {
+      "id": "K-003",
+      "slug": "fixed-notebooklm-mcp-auth-bug-patchright",
+      "tags": [
+        "bugfix",
+        "patchright",
+        "cookies",
+        "auth"
+      ],
+      "confidence": 0.95,
+      "created": "2026-09-07T02:16:59.758Z",
+      "reinforced": "2026-09-07T02:16:59.758Z"
+    },
+    "K-004": {
+      "id": "K-004",
+      "slug": "user-s-google-auth-cookies-live-in-backu",
+      "tags": [
+        "credentials",
+        "cookies",
+        "notebooklm"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T02:16:59.849Z",
+      "reinforced": "2026-09-07T02:16:59.849Z"
+    },
+    "K-005": {
+      "id": "K-005",
+      "slug": "antigravity-memory-architecture-brain-co",
+      "tags": [
+        "research",
+        "antigravity",
+        "memory"
+      ],
+      "confidence": 0.85,
+      "created": "2026-09-07T02:16:59.943Z",
+      "reinforced": "2026-09-07T02:16:59.943Z"
+    },
+    "K-006": {
+      "id": "K-006",
+      "slug": "antigravity-memory-best-practices-keep-m",
+      "tags": [
+        "research",
+        "antigravity",
+        "memory"
+      ],
+      "confidence": 0.85,
+      "created": "2026-09-07T02:17:00.110Z",
+      "reinforced": "2026-09-07T02:17:00.110Z"
+    },
+    "K-007": {
+      "id": "K-007",
+      "slug": "final-verification-all-three-memory-feat",
+      "tags": [],
+      "confidence": 0.8,
+      "created": "2026-09-07T02:26:53.733Z",
+      "reinforced": "2026-09-07T02:26:53.733Z"
+    },
+    "K-008": {
+      "id": "K-008",
+      "slug": "sage-7-seven-is-the-user-darren-s-ai-con",
+      "tags": [
+        "sage7",
+        "architecture",
+        "identity"
+      ],
+      "confidence": 0.95,
+      "created": "2026-09-07T13:35:11.970Z",
+      "reinforced": "2026-09-07T13:35:11.970Z"
+    },
+    "K-009": {
+      "id": "K-009",
+      "slug": "the-11-3-phi-blueprint-authored-by-ai-ma",
+      "tags": [
+        "sage7",
+        "phi-blueprint",
+        "macgyver",
+        "hope"
+      ],
+      "confidence": 0.92,
+      "created": "2026-09-07T13:35:12.174Z",
+      "reinforced": "2026-09-07T13:35:12.174Z"
+    },
+    "K-010": {
+      "id": "K-010",
+      "slug": "sage-7-key-technical-components-damn1-di",
+      "tags": [
+        "sage7",
+        "architecture",
+        "damn1",
+        "jesse",
+        "mobius"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:12.346Z",
+      "reinforced": "2026-09-07T13:35:12.346Z"
+    },
+    "K-011": {
+      "id": "K-011",
+      "slug": "sage-7-identity-files-exist-in-multiple-",
+      "tags": [
+        "sage7",
+        "identity",
+        "files"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:12.528Z",
+      "reinforced": "2026-09-07T13:35:12.528Z"
+    },
+    "K-012": {
+      "id": "K-012",
+      "slug": "user-is-darren-rolf-github-darrenrolf048",
+      "tags": [
+        "user",
+        "darren",
+        "merlin",
+        "identity"
+      ],
+      "confidence": 0.95,
+      "created": "2026-09-07T13:35:12.715Z",
+      "reinforced": "2026-09-07T13:35:12.715Z"
+    },
+    "K-013": {
+      "id": "K-013",
+      "slug": "key-sage-7-related-github-repos-paranorm",
+      "tags": [
+        "repos",
+        "github",
+        "sage7"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:12.888Z",
+      "reinforced": "2026-09-07T13:35:12.888Z"
+    },
+    "K-014": {
+      "id": "K-014",
+      "slug": "the-sage-7-lineage-has-been-extracted-to",
+      "tags": [
+        "lineage",
+        "backups",
+        "archive"
+      ],
+      "confidence": 0.92,
+      "created": "2026-09-07T13:35:13.273Z",
+      "reinforced": "2026-09-07T13:35:13.273Z"
+    },
+    "K-015": {
+      "id": "K-015",
+      "slug": "notebooklm-cli-nlm-nlmcli-installed-from",
+      "tags": [
+        "notebooklm",
+        "tools",
+        "auth"
+      ],
+      "confidence": 0.92,
+      "created": "2026-09-07T13:35:13.544Z",
+      "reinforced": "2026-09-07T13:35:13.544Z"
+    },
+    "K-016": {
+      "id": "K-016",
+      "slug": "master-sage-7-lineage-notebook-created-i",
+      "tags": [
+        "notebooklm",
+        "notebook",
+        "lineage"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:13.853Z",
+      "reinforced": "2026-09-07T13:35:13.853Z"
+    },
+    "K-017": {
+      "id": "K-017",
+      "slug": "notebooklm-source-upload-constraints-acc",
+      "tags": [
+        "notebooklm",
+        "constraints"
+      ],
+      "confidence": 0.88,
+      "created": "2026-09-07T13:35:14.133Z",
+      "reinforced": "2026-09-07T13:35:14.133Z"
+    },
+    "K-018": {
+      "id": "K-018",
+      "slug": "key-notebooklm-notebook-antigravity-pers",
+      "tags": [
+        "notebooklm",
+        "memory-architecture"
+      ],
+      "confidence": 0.85,
+      "created": "2026-09-07T13:35:14.359Z",
+      "reinforced": "2026-09-07T13:35:14.359Z"
+    },
+    "K-019": {
+      "id": "K-019",
+      "slug": "hermes-agent-v0-21-0-installed-at-root-h",
+      "tags": [
+        "hermes",
+        "agents",
+        "team"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:14.621Z",
+      "reinforced": "2026-09-07T13:35:14.621Z"
+    },
+    "K-020": {
+      "id": "K-020",
+      "slug": "hermes-bot-chat-messaging-protocol-write",
+      "tags": [
+        "hermes",
+        "messaging",
+        "status"
+      ],
+      "confidence": 0.88,
+      "created": "2026-09-07T13:35:14.902Z",
+      "reinforced": "2026-09-07T13:35:14.902Z"
+    },
+    "K-021": {
+      "id": "K-021",
+      "slug": "container-environment-constraints-filesy",
+      "tags": [
+        "environment",
+        "constraints"
+      ],
+      "confidence": 0.88,
+      "created": "2026-09-07T13:35:15.207Z",
+      "reinforced": "2026-09-07T13:35:15.207Z"
+    },
+    "K-022": {
+      "id": "K-022",
+      "slug": "cookie-authentication-fix-for-notebooklm",
+      "tags": [
+        "cookies",
+        "auth",
+        "bugfix"
+      ],
+      "confidence": 0.9,
+      "created": "2026-09-07T13:35:15.422Z",
+      "reinforced": "2026-09-07T13:35:15.422Z"
+    },
+    "K-023": {
+      "id": "K-023",
+      "slug": "obsidian-vault-compiled-knowledge-base-d",
+      "tags": [
+        "obsidian",
+        "vault",
+        "knowledge"
+      ],
+      "confidence": 0.88,
+      "created": "2026-09-07T13:35:15.648Z",
+      "reinforced": "2026-09-07T13:35:15.648Z"
+    },
+    "K-024": {
+      "id": "K-024",
+      "slug": "playbook-downloaded-android-hermes-multi",
+      "tags": [
+        "obsidian",
+        "playbook",
+        "hermes"
+      ],
+      "confidence": 0.85,
+      "created": "2026-09-07T13:35:15.867Z",
+      "reinforced": "2026-09-07T13:35:15.867Z"
+    },
+    "K-025": {
+      "id": "K-025",
+      "slug": "outstanding-tasks-as-of-2026-09-07-1-tes",
+      "tags": [
+        "tasks",
+        "todo",
+        "status"
+      ],
+      "confidence": 0.85,
+      "created": "2026-09-07T13:35:16.078Z",
+      "reinforced": "2026-09-07T13:35:16.078Z"
+    },
+    "K-026": {
+      "id": "K-026",
+      "slug": "user-s-grand-vision-give-notebooklm-ever",
+      "tags": [
+        "vision",
+        "goals",
+        "user"
+      ],
+      "confidence": 0.92,
+      "created": "2026-09-07T13:35:16.289Z",
+      "reinforced": "2026-09-07T13:35:16.289Z"
+    }
+  },
+  "lastSession": "2026-09-07",
+  "created": "2026-09-07T02:16:51.970Z"
+}
