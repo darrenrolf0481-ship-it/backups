@@ -77,6 +77,9 @@
     },
     "K-026": {
       "label": "User's grand vision: give NotebookLM every version of Seven'"
+    },
+    "K-027": {
+      "label": "Darren uploaded two critical archives to backups repo: (1) D"
     }
   },
   "edges": [
@@ -282,6 +285,20 @@
       "relation": "constrains",
       "weight": 1,
       "created": "2026-09-07T14:07:36.476Z"
+    },
+    {
+      "from": "K-027",
+      "to": "K-014",
+      "relation": "extends",
+      "weight": 1,
+      "created": "2026-09-07T17:07:30.091Z"
+    },
+    {
+      "from": "K-027",
+      "to": "K-008",
+      "relation": "documents",
+      "weight": 1,
+      "created": "2026-09-07T17:07:30.168Z"
     }
   ]
 }
