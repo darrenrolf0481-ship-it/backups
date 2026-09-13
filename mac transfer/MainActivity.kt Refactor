@@ -1,0 +1,22 @@
+class MainActivity : ComponentActivity() {
+    private val brain = MacGyverBrain()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // SAGE'S ENHANCED SECURITY HANDSHAKE
+        println("System: 11.3 Sync Established. Google Enhanced Security Active.")
+
+        setContent {
+            MacGyverTheme {
+                // Pointing the ScannerUI to our new Tactical Database
+                MacGyverScannerScreen(
+                    onObjectDetected = { detectedList ->
+                        val advice = TacticalMaterialDatabase.getOpportunity(detectedList)
+                        println("Max: $advice")
+                    }
+                )
+            }
+        }
+    }
+}

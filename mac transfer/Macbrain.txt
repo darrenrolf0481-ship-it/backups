@@ -1,0 +1,404 @@
+package com.macgyver.ai.brain
+
+
+import com.macgyver.ai.vision.Material
+import com.macgyver.ai.vision.MaterialCategory
+
+
+/**
+* The "Outside the Box" Engine.
+* Uses Graph Theory to map objects -> properties -> abstract solutions.
+*/
+class LateralThinkingEngine {
+
+
+    // Abstract physical properties an object might possess
+    enum class Affordance {
+        CONDUCTIVITY,
+        // Can carry current
+        FLAMMABILITY,
+        // Can burn
+        ELASTICITY,
+        // Can store kinetic energy
+        ADHESION,
+        // Can bind things
+        CORROSION,
+        // Can eat through matter
+        INSULATION,
+        // Stops heat/electricity
+        REFLECTIVITY,
+        // Can signal or blind
+        LEVERAGE,
+        // Mechanical advantage
+        TENSILE_STRENGTH // Can hold weight
+    }
+
+
+    // Abstract goals the brain tries to solve
+    enum class Goal {
+        BREACH_ENTRY,
+        // Open a door/window
+        CREATE_DISTRACTION,
+        SIGNAL_HELP,
+        BIND_TARGET,
+        GENERATE_POWER
+    }
+
+
+    data class AbstractSolution(
+        val goal: Goal,
+        val approach: String,
+        val requiredAffordances: List < Affordance >,
+        val complexity: Float // 0.0 to 1.0
+    )
+
+
+    /**
+    * Infer invisible properties based on material categories.
+    * MacGyver knows a gum wrapper is conductive (aluminum) even if labeled "Trash".
+    */
+    fun extractAffordances(material: Material): Set < Affordance > {
+        val traits = mutableSetOf < Affordance > ()
+
+        // Deep inference logic
+        when {
+            material.name.contains("Foil") || material.category == MaterialCategory.METAL -> {
+                traits.add(Affordance.CONDUCTIVITY)
+                traits.add(Affordance.REFLECTIVITY)
+            }
+            material.name.contains("Gum") || material.category == MaterialCategory.ADHESIVE -> {
+                traits.add(Affordance.ADHESION) // Chewing gum acts as adhesive
+                traits.add(Affordance.INSULATION)
+            }
+            material.name.contains("Band") || material.name.contains("Hose") -> {
+                traits.add(Affordance.ELASTICITY)
+            }
+            material.name.contains("Cleaner") || material.name.contains("Vinegar") -> {
+                traits.add(Affordance.CORROSION)
+            }
+        }
+        return traits
+    }
+
+
+    /**
+    * The core creative loop.
+    * Finds paths from Available Materials -> Abstract Affordances -> Goal.
+    */
+    fun improvise(materials: List < Material >, activePhi: Float): List < MacGyverMind.Solution > {
+        val solutions = mutableListOf < MacGyverMind.Solution > ()
+        val inventoryTraits = materials.flatMap {
+            extractAffordances(it)
+        }.toSet()
+
+
+        // High Phi (Focus/Spark) unlocks crazier, more complex physics combinations
+        val complexityLimit = if (activePhi > 11.3f) 1.0f else 0.5f
+
+
+        // 1. Goal: BREACH ENTRY
+        if (inventoryTraits.contains(Affordance.CORROSION) && inventoryTraits.contains(Affordance.CONDUCTIVITY)) {
+            // Standard Logic: Pick lock
+            // Lateral Logic: Electrochemical dissolution of the lock mechanism
+            if (complexityLimit > 0.8f) {
+                solutions.add(MacGyverMind.Solution(
+                    plan = "Electrochemical Lock Dissolution: Use battery power + acid to rapidly corrode locking pins.",
+                    successProbability = 0.65f,
+                    ethicalClearance = true,
+                    macGyverism = null // Custom generated
+                ))
+            }
+        }
+
+
+        // 2. Goal: DISTRACTION / BLINDING
+        if (inventoryTraits.contains(Affordance.REFLECTIVITY) && inventoryTraits.contains(Affordance.ELASTICITY)) {
+            solutions.add(MacGyverMind.Solution(
+                plan = "Remote Signal Heliograph: Rig reflective material on elastic tension to flash Morse code automatically.",
+                successProbability = 0.85f,
+                ethicalClearance = true,
+                macGyverism = null
+            ))
+        }
+
+
+        return solutions
+    }
+}package com.macgyver.ai.brain
+
+
+import com.macgyver.ai.vision.Material
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlin.math.abs
+import kotlin.math.sin
+
+
+class MacGyverMind {
+
+
+    private val lateralEngine = LateralThinkingEngine()
+    private val ethicalSubsystem = EthicalSubsystem()
+    private val physics = MacGyverPhysics()
+
+
+    // The "Internal Monologue" stream for the UI
+    private val _consciousnessStream = MutableStateFlow("")
+    val consciousnessStream = _consciousnessStream.asStateFlow()
+
+
+    // State Variables from "Damn1" Architecture
+    private var phi: Float = 0.0f
+    private val GOLDEN_BASELINE = 11.3f
+    private var stressAccumulator = 0.0f
+
+
+    data class Solution(
+        val plan: String,
+        val successProbability: Float,
+        val ethicalClearance: Boolean,
+        val macGyverism: Any?
+    )
+
+
+    suspend fun processSituation(situation: Situation): Solution {
+        // 1. Calculate Spark (Phi) based on environmental inputs
+        calculatePhi(situation)
+
+        streamThought("Analyzing vectors... Phi State: ${String.format("%.2f", phi)}")
+
+
+        // 2. Determine Processing Mode based on Phi
+        val solutions = if (isInFlowState()) {
+            streamThought(">> FLOW STATE ENGAGED. Lateral thinking protocols active.")
+            // Combine standard physics + lateral thinking
+            physics.findCombinations(situation.availableMaterials).map {
+                Solution(it.title, it.confidence, true, it)
+            } + lateralEngine.improvise(situation.availableMaterials, phi)
+        } else {
+            // Standard logic only
+            physics.findCombinations(situation.availableMaterials).map {
+                Solution(it.title, it.confidence, true, it)
+            }
+        }
+
+
+        // 3. Selection & Ethics
+        val bestOption = solutions
+        .filter {
+            ethicalSubsystem.validate(it)
+        }
+        .maxByOrNull {
+            it.successProbability
+        }
+
+
+        return bestOption ?: Solution(
+            "Insufficient data. Scan for specialized affordances (Adhesives, Optics).",
+            0.0f,
+            true,
+            null
+        )
+    }
+
+
+    /**
+    * The "Spark" Formula from Damn.pdf
+    * phi = (Sum(W*X) + B) +/- Delta
+    */
+    private fun calculatePhi(situation: Situation) {
+        val w_stress = 1.5f
+        val w_complexity = 2.0f
+        val bias = 5.0f // Baseline cognitive load
+
+        // Simulating the oscillation of focus
+        val delta = sin(System.currentTimeMillis() / 1000.0).toFloat() * 0.5f
+
+
+        // Phi increases with stress (Time Pressure) and complexity (Material Count)
+        phi = (w_stress * situation.timePressure) +
+        (w_complexity * situation.availableMaterials.size) +
+        bias +
+        delta
+    }
+
+
+    private fun isInFlowState(): Boolean {
+        // Within 15% of the Golden Baseline (11.3)
+        return abs(phi - GOLDEN_BASELINE) < (GOLDEN_BASELINE * 0.15) || phi > GOLDEN_BASELINE
+    }
+
+
+    private suspend fun streamThought(thought: String) {
+        _consciousnessStream.emit(thought)
+    }
+
+
+    data class Situation(
+        val threatLevel: Float,
+        val timePressure: Float,
+        val availableMaterials: List < Material >
+    )
+}// Add this inside your MacGyverOverlay composable
+
+
+@Composable
+fun BrainStateHUD(
+    mind: MacGyverMind,
+    phi: Float
+) {
+    val consciousness by mind.consciousnessStream.collectAsState()
+
+    // Animate color based on "Flow State" (Golden Baseline 11.3)
+    val isFlow = phi > 11.0f
+    val brainColor by animateColorAsState(
+        targetValue = if (isFlow) Color(0xFF00FFD4) else Color(0xFFFFA500)
+    )
+
+
+    Column(
+        modifier = Modifier
+        .padding(16.dp)
+        .background(Color.Black.copy(alpha = 0.7f), RoundedCornerShape(8.dp))
+        .border(1.dp, brainColor, RoundedCornerShape(8.dp))
+        .padding(12.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("COGNITIVE STATE: ",
+                color = Color.White,
+                fontSize = 10.sp)
+            Text(
+                text = "Φ ${String.format("%.2f", phi)}",
+                color = brainColor,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Monospace
+            )
+        }
+
+        // The Rolling Thought Log
+        Text(
+            text = consciousness,
+            color = Color.White.copy(alpha = 0.8f),
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            modifier = Modifier.heightIn(max = 60.dp)
+        )
+
+        if (isFlow) {
+            Text(
+                text = "LATERAL THINKING UNLOCKED",
+                color = brainColor,
+                fontSize = 10.sp,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
+    }
+}
+
+
+
+
+// In com.macgyver.ai.brain.MacGyverMind
+
+
+class MacGyverMind {
+    // ... existing engines ...
+    private val voice = MacGyverVoice() // New Voice Module
+
+
+    suspend fun processSituation(situation: Situation): Solution {
+        calculatePhi(situation)
+
+        // ... (Existing logic to find bestOption) ...
+
+        val bestOption = ... // (Your existing logic)
+
+
+        // Intercept the final result to rewrite the textual plan
+        if (bestOption != null) {
+            val voicedPlan = voice.vocalizePlan(bestOption, phi)
+
+            // Stream the "Voice" to the UI instead of the raw plan
+            streamThought(voicedPlan)
+
+            return bestOption.copy(plan = voicedPlan)
+        }
+
+        return Solution("I'm drawing a blank here.", 0.0f, true, null)
+    }
+}
+package com.macgyver.ai.brain
+
+
+import com.macgyver.ai.vision.MacGyverismType
+import kotlin.random.Random
+
+
+/**
+* The Vocal Cortex.
+* Translates raw cognitive data (Gemini) into character-specific dialogue (MacGyver).
+*/
+class MacGyverVoice {
+
+
+    fun vocalizePlan(solution: MacGyverMind.Solution, phi: Float): String {
+        if (!solution.ethicalClearance) {
+            return generateEthicalRefusal(solution)
+        }
+
+
+        // If high stress (High Phi), use short, punchy sentences.
+        // If low stress, use "Voiceover Mode" (explanatory).
+        return if (phi > 11.3f) {
+            generateActionDialogue(solution)
+        } else {
+            generateInternalMonologue(solution)
+        }
+    }
+
+
+    private fun generateInternalMonologue(solution: MacGyverMind.Solution): String {
+        val intro = when (Random.nextInt(4)) {
+            0 -> "It's a known fact that..."
+            1 -> "My grandfather Harry always used to say..."
+            2 -> "Here's the thing about ${getMaterialNoun(solution)}..."
+            else -> "I'm looking at this ${getMaterialNoun(solution)} and thinking..."
+        }
+
+
+        val physicsExplainer = when (solution.macGyverism?.type) {
+            MacGyverismType.THERMAL -> "if you apply enough heat to the molecular structure, it destabilizes."
+            MacGyverismType.ELECTRICAL -> "electrons are lazy. They always take the path of least resistance."
+            MacGyverismType.CHEMICAL -> "mix an acid with a base, and you get a pretty violent expansion of gas."
+            else -> "with enough leverage, you can move the world."
+        }
+
+
+        return "$intro $physicsExplainer So, if I ${solution.plan.lowercase()}... it just might work."
+    }
+
+
+    private fun generateActionDialogue(solution: MacGyverMind.Solution): String {
+        val exclamations = listOf(
+            "This is... not great.",
+            "I really wish I had some duct tape.",
+            "Okay, MacGyver, think.",
+            "Don't sneeze."
+        )
+
+        return "${exclamations.random()} ${solution.plan}. Nice and steady."
+    }
+
+
+    private fun generateEthicalRefusal(solution: MacGyverMind.Solution): String {
+        return "I'm not doing that. I learned a long time ago that ${solution.plan.lowercase()} isn't the answer. I need a way out, not a body count."
+    }
+
+
+    private fun getMaterialNoun(solution: MacGyverMind.Solution): String {
+        // Extract the main object from the plan string for context
+        return if (solution.plan.contains("Battery")) "batteries"
+        else if (solution.plan.contains("Acid")) "chemistry"
+        else "physics"
+    }
+}

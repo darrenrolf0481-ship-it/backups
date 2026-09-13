@@ -1,0 +1,34 @@
+package com.macgyver.ai.vision
+
+object TacticalMaterialDatabase {
+    val materials = mapOf(
+        "potato" to Material(
+            name = "Russet Potato",
+            category = MaterialCategory.CHEMICAL,
+            properties = MaterialProperties(reactive = true, conductivity = false),
+            macGyverisms = listOf("Galvanic Cell (Battery)", "Thermal Heat Sink", "Starch-based Adhesive")
+        ),
+        "duct_tape" to Material(
+            name = "Duct Tape",
+            category = MaterialCategory.ADHESIVE,
+            properties = MaterialProperties(tensileStrength = 50f),
+            macGyverisms = listOf("Universal Binding", "Structural Reinforcement", "Makeshift Bandage")
+        ),
+        "vinegar" to Material(
+            name = "Acetic Acid",
+            category = MaterialCategory.CHEMICAL,
+            properties = MaterialProperties(reactive = true),
+            macGyverisms = listOf("Pressure Generation (w/ Baking Soda)", "Rust Removal")
+        )
+    )
+
+    fun getOpportunity(detected: List<String>): String {
+        return when {
+            detected.contains("potato") && detected.contains("copper_wire") -> 
+                "Opportunity: Galvanic Power Source. We can jumpstart the A15 sensor array."
+            detected.contains("vinegar") && detected.contains("bottle") -> 
+                "Opportunity: Pressure Jet. We can clear that 30-foot wall."
+            else -> "Scanning for the Holy Trinity: Chemicals, Duct Tape, Metal."
+        }
+    }
+}

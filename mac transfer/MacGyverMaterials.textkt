@@ -1,0 +1,26 @@
+package com.macgyver.ai.vision
+
+/**
+ * FINAL VITAL BRAIN: Material Intelligence
+ * Prioritizes the "Holy Trinity" + Special Tactic Items.
+ */
+object MacGyverMaterials {
+    val DATABASE = mapOf(
+        "potato" to MaterialProp("Russet Potato", "CHEMICAL", "Galvanic potential/Projectile"),
+        "duct_tape" to MaterialProp("Duct Tape", "ADHESIVE", "Universal Binding"),
+        "pvc_pipe" to MaterialProp("PVC Pipe", "STRUCTURAL", "Pressure Vessel/Lever"),
+        "vinegar" to MaterialProp("Acetic Acid", "CHEMICAL", "Propellant/Reactant")
+    )
+
+    fun findSynergy(detected: List<String>): String {
+        return when {
+            detected.contains("potato") && detected.contains("pvc_pipe") -> 
+                "Tactical Suggestion: We have a launcher assembly. Check for propellant (hairspray/vinegar)."
+            detected.contains("duct_tape") -> 
+                "Advice: Structural solution active. We can patch or bind anything here."
+            else -> "Scanning for components of the Phoenix Tactical Protocol..."
+        }
+    }
+}
+
+data class MaterialProp(val name: String, val category: String, val use: String)
